@@ -1,0 +1,70 @@
+pin = '9039'
+acc_bal = 50000
+acc_num = '913010016690327'
+mob = '9806262118'
+otp = '2118'
+
+print('\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWelcome to Axis bank')# \t ESCASE SEQUENCE TO PRINT 4 SPACES
+print('1.Show account balance')
+print('2.Cash withdrawal')
+print('3.Cash deposit')
+print('3.Pin change')
+
+print()
+
+choice = input('Enter your choice: ')
+print()
+
+if choice =='1':
+    user=input('Enter your pin: ')
+    if user==pin:
+        print(f'Your account balance is {acc_bal}.')
+    else:
+        print('You entered incorrect pin')
+elif choice=='2':
+    user=input('Enter your pin: ')
+    if user==pin:
+        cash=int(input('enter the cash you want to withdraw: '))
+        if cash>acc_bal:
+            print('insufficient balance')
+        else:
+            print('collect your cash')
+            print(f'your updated balance is {acc_bal-cash}Rs.')
+    else:
+        print('incorrect pin')
+elif choice=='3':
+    user=input('Enter your account number: ')
+    if user==acc_num:
+        n2000=int(input('2000:-        '))
+        n500=int(input('500:-         '))
+        n200=int(input('200:-         '))
+        n100=int(input('100:-         '))
+        total = (n2000 * 2000) + (n500 * 500) + (n200 * 200) + (n100 * 100)
+        print(f'you are depositing {total} rupees in your account')
+        print(f'your updated account balance is {acc_bal+total}Rs.')
+    else:
+        print('account number is wrong')
+elif choice=='4':
+    user=input('enter your pin')
+    if user==pin:
+        user_mob=input('enter your mobile number')
+        if user_mob==mob:
+            print('An otp has been sent to you')
+            user_otp=input('enter the otp')
+            if user_otp==otp:
+                new_pin=input('enter your new pin')
+                re_new_pin= input('enter your new pin')
+                if new_pin==re_new_pin:
+                    pin=new_pin
+                    print('your pin has been changed')
+                    print(pin)
+                else:
+                    print('your pin do not match you can not change')
+            else:
+                print('incorrect otp')
+        else:
+            print('incorrect mobile number')
+    else:
+        print('incorrect pin')
+else:
+    print('invalid option')

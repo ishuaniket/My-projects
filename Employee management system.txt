@@ -1,0 +1,100 @@
+employees = []
+
+def add_employee():
+    self = True
+    print("Enter Employee Details:")
+    ids = input("ID: ")
+    name = input("Name: ")
+    age = input("Age: ")
+    gender = input("Gender: ")
+    position = input("Position: ")
+    salary = input("Salary: ")
+
+    if len(employees)==0:
+        self = True
+    else:
+        for emp in employees:
+            if emp['id'] == ids:
+                self = False
+                break
+    if self==True:
+
+        employee = {'id': ids, 'name': name, 'age': age, 'gender': gender, 'position': position, 'salary': salary}
+
+        employees.append(employee)
+        print("Employee added successfully.")
+    else:
+        print('ID already exists!!')
+
+def update_employee():
+    ids = input('Enter Employee id you want to update : ')
+    for emp in employees:
+        if emp['id']==ids:
+            print('you can update')
+            print('1. Name')
+            print('2. Age')
+            print('3. Profile')
+            print('4. Salary')
+            opt=input('Select any 1: ')
+            if opt=='1':
+                print(f'old_name: {emp['name']}')
+                emp['name']=input('Enter new name: ')
+            elif opt=='2':
+                print(f'old_Age: {emp['Age']}')
+                emp['Age'] = input('Enter new age: ')
+            elif opt=='3':
+                print(f'old_Profile: {emp['Profile']}')
+                emp['Profile'] = input('Enter new profile: ')
+            elif opt=='4':
+                print(f'old_Salary: {emp['Salary']}')
+                emp['Salary'] = input('Enter new salary: ')
+            print('Employee details updated')
+            print()
+            return
+
+    print('Employee not found')
+
+def delete_employee():
+    ids = input('enter employee id: ')
+    for emp in employees:
+        if emp['id']==ids:
+            employees.remove(emp)
+            print('Employee deleted successfully')
+            return
+    print('Employee not found')
+
+
+def list_employees():
+    if len(employees) == 0:
+        print("No employees found.")
+        return
+
+    print("ID\tName\tAge\tGender\tPosition\tSalary")
+    print()
+    for employee in employees:
+        print(f"{employee['id']}\t{employee['name']}\t{employee['age']}\t{employee['gender']}\
+\t{employee['position']}\t{employee['salary']}")
+
+while True:
+
+    print()
+    print("----Employee Management System-----")
+    print("1. Add Employee")
+    print("2. Update Employee")
+    print("3. Delete Employee")
+    print("4. List Employees")
+    print("5. Exit")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        add_employee()
+    elif choice == 2:
+        update_employee()
+    elif choice == 3:
+        delete_employee()
+    elif choice == 4:
+        list_employees()
+    elif choice == 5:
+        print('Program Exited!!')
+        break
+    else:
+        print("Invalid choice. Please try again.")
